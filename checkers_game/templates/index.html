@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Checkers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Load Socket.IO from a CDN or local if preferred -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+
+    <div id="main-menu" class="screen active">
+        <h1>Ultimate Checkers</h1>
+
+        <div class="menu-section">
+            <h2>Select Game Mode</h2>
+            <div class="options-group">
+                <button class="mode-btn active" data-mode="ai">Single Player (vs AI)</button>
+                <button class="mode-btn" data-mode="multi_lan">Multiplayer (LAN)</button>
+                <button class="mode-btn" data-mode="multi_local">Multiplayer (Local)</button>
+            </div>
+        </div>
+
+        <div class="menu-section" id="ai-difficulty-section">
+            <h2>AI Difficulty</h2>
+            <div class="options-group">
+                <button class="diff-btn active" data-diff="easy">Easy</button>
+                <button class="diff-btn" data-diff="medium">Medium</button>
+                <button class="diff-btn" data-diff="hard">Hard</button>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <h2>Select Rules</h2>
+            <div class="options-group">
+                <button class="rule-btn active" data-rule="normal">Normal (8x8)</button>
+                <button class="rule-btn" data-rule="brazilian">Brazilian (8x8)</button>
+                <button class="rule-btn" data-rule="international">International (10x10)</button>
+            </div>
+        </div>
+
+        <div class="menu-section lan-section" id="lan-section" style="display: none;">
+            <h2>LAN Multiplayer</h2>
+            <p>Room ID:</p>
+            <input type="text" id="room-id" placeholder="Enter Room ID">
+            <div class="options-group">
+                <button id="btn-create-room">Create Room</button>
+                <button id="btn-join-room">Join Room</button>
+            </div>
+            <p id="lan-message" class="message"></p>
+        </div>
+
+        <button id="btn-start-game" class="start-btn">Start Game</button>
+    </div>
+
+    <div id="game-screen" class="screen">
+        <div class="header">
+            <h2 id="game-title">Checkers</h2>
+            <p id="game-status">Turn: Player 1 (Red)</p>
+            <button id="btn-back-menu">Back to Menu</button>
+        </div>
+
+        <div id="board-container">
+            <canvas id="checkers-board"></canvas>
+        </div>
+    </div>
+
+    <!-- Pass socket connection url dynamically if needed, though socket.io defaults to window.location -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
