@@ -1,10 +1,7 @@
-import urllib.request
+import requests
 import json
-
-with open("checkers_game.zip", "rb") as f:
-    req = urllib.request.Request("https://api.anonfiles.com/upload", data={"file": f}, method="POST")
-    try:
-        response = urllib.request.urlopen(req)
-        print(response.read().decode())
-    except Exception as e:
-        print(e)
+import random
+import string
+bin_id = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(16))
+res = requests.post(f"https://filebin.net/{bin_id}/checkers_game.zip", data=open("checkers_game.zip", "rb"), headers={"filename": "checkers_game.zip"})
+print(f"URL: https://filebin.net/{bin_id}/checkers_game.zip")
