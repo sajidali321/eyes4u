@@ -1,9 +1,11 @@
-/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/engineio/async_drivers/eventlet.py:1: EventletDeprecationWarning:
-Eventlet is deprecated. It is currently being maintained in bugfix mode, and
-we strongly recommend against using it for new projects.
-
-If you are already using Eventlet, we recommend migrating to a different
-framework.  For more detail see
-https://eventlet.readthedocs.io/en/latest/asyncio/migration.html
-
-  from eventlet.green.threading import Event
+=====================================================
+   CHECKERS GAME SERVER STARTED
+=====================================================
+To play locally on this computer, open your browser and go to:
+  --> http://127.0.0.1:5000
+To play with a friend on LAN (WiFi), tell them to go to:
+  --> http://192.168.0.2:5000
+=====================================================
+Press Ctrl+C to stop the server.
+ * Serving Flask app 'server'
+ * Debug mode: off

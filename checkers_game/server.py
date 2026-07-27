@@ -9,7 +9,7 @@ log.setLevel(logging.ERROR)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
 # Simple memory storage for rooms
 rooms = {}
@@ -78,4 +78,4 @@ if __name__ == '__main__':
     print(f"  --> http://{ip}:5000")
     print("=====================================================")
     print("Press Ctrl+C to stop the server.")
-    socketio.run(app, host='0.0.0.0', port=5000)
+    socketio.run(app, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
